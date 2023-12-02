@@ -8,6 +8,8 @@ Next.js 14 Playwright Docker hello world sample
 node --version
 # v20.9.0
 
+nodenv local 20.9.0
+
 npm --version
 # 10.2.4
 
