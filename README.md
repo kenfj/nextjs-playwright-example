@@ -165,3 +165,19 @@ docker build -t todoapp-nextjs:latest -f ./Dockerfile.prod .
 docker run -p 3000:3000 --rm todoapp-nextjs:latest
 # http://localhost:3000
 ```
+
+## Upgrade Packages
+
+```bash
+# check
+pnpm outdated
+
+# upgrade packages
+pnpm update
+
+# upgrade pnpm by corepack
+corepack prepare pnpm@8.11.0 --activate
+
+# or upgrade pnpm by itself
+pnpm add -g pnpm@8.11.0
+```
