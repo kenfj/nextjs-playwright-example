@@ -49,3 +49,38 @@ pnpm start
 # https://nextjs.org/docs/pages/api-reference/create-next-app
 pnpm create next-app . --skip-git
 ```
+
+## Setup Playwright
+
+```bash
+# https://playwright.dev/docs/intro#installing-playwright
+pnpm create playwright
+# Where to put your end-to-end tests? · tests
+# Add a GitHub Actions workflow? (y/N) · true
+# Install Playwright browsers (Y/n) · false
+
+# install chromium only (skip firefox webkit)
+pnpm exec playwright uninstall --all
+pnpm exec playwright install chromium --with-deps
+
+# run test
+pnpm exec playwright test --project=chromium
+
+# run specific file
+pnpm exec playwright test example --project=chromium
+
+# configure simple output for CI
+CI=true pnpm exec playwright test --project=chromium
+
+# start web server to show ./playwright-report/index.html
+pnpm exec playwright show-report
+
+# debug test
+pnpm exec playwright test --ui
+pnpm exec playwright test --debug
+DEBUG=pw:webserver pnpm exec playwright test
+DEBUG=pw:browser pnpm exec playwright test
+
+# generate code
+pnpm exec playwright codegen
+```
