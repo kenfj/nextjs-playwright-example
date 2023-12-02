@@ -1,0 +1,13 @@
+# https://playwright.dev/docs/docker
+FROM mcr.microsoft.com/playwright:v1.40.0-jammy AS base
+
+WORKDIR /app
+
+RUN npm install -g npm pnpm && \
+    node --version && \
+    npm --version && \
+    pnpm --version
+
+RUN pnpm dlx playwright install chromium --with-deps
+
+CMD ["/bin/bash"]

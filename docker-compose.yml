@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - 3000:3000
+      - 9323:9323
+    init: true
+    tty: true
+    volumes:
+      - .:/app
+      - node-modules-volume:/app/node_modules
+    command: pnpm dev -H 0.0.0.0 --port 3000
+
+volumes:
+  node-modules-volume:

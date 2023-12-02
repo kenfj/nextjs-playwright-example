@@ -22,6 +22,12 @@ sw_vers
 
 code --version
 # 1.84.2
+
+docker --version
+# Docker version 24.0.6, build ed223bc
+
+docker-compose --version
+# Docker Compose version v2.23.0-desktop.1
 ```
 
 ## Quick Start
@@ -83,4 +89,41 @@ DEBUG=pw:browser pnpm exec playwright test
 
 # generate code
 pnpm exec playwright codegen
+```
+
+## Docker Dev Server
+
+* `start_devserver.sh`
+  - http://localhost:3000/
+
+```bash
+# install packages
+docker-compose run app pnpm install --frozen-lockfile
+
+# run dev server
+docker-compose up app -d
+# http://localhost:3000/
+
+# check
+docker-compose ps
+docker-compose logs app -f
+```
+
+* `start_e2e-test.sh` `start_e2e-report.sh`
+
+```bash
+# run test in existing app
+docker-compose exec app pnpm exec playwright test --project=chromium
+# run test in new app
+docker-compose run --rm app pnpm exec playwright test --project=chromium
+```
+
+```bash
+# run bash in existing container
+docker-compose exec app bash
+# run bash in new container
+docker-compose run --rm app bash
+
+# clean up
+docker-compose down
 ```
