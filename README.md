@@ -127,3 +127,24 @@ docker-compose run --rm app bash
 # clean up
 docker-compose down
 ```
+
+## Docker VSCode devcontainer
+
+* VSCode setup
+  - Command Palette
+  - Dev Containers: Add Dev Container Configuration Files
+  - From 'docker-compose.yml'
+* devcontainer from `docker-compose.yml`
+  - https://zenn.dev/saboyutaka/articles/9cffc8d14c6684
+* open `.` from VSCode > Reopen in container
+  - dev server: `http://localhost:3000`
+  - report server: `http://localhost:9323`
+  - `docker-compose down` to clean up
+
+```bash
+# sample commands in VSCode Terminal
+cd /app
+
+# run e2e test
+pnpm exec playwright test --project=chromium
+```
