@@ -150,3 +150,18 @@ cd /app
 # run e2e test
 pnpm exec playwright test --project=chromium
 ```
+
+## Docker Standalone Server
+
+* development and production with multi-stage builds
+  - https://blog.atulr.com/docker-local-production-image/
+* official Dockerfile example
+  - https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
+* execute `./start_prodserver.sh`
+
+```bash
+docker build -t todoapp-nextjs:latest -f ./Dockerfile.prod .
+
+docker run -p 3000:3000 --rm todoapp-nextjs:latest
+# http://localhost:3000
+```
